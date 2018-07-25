@@ -10,10 +10,11 @@ import { DeptcompComponent } from './deptcomp/deptcomp.component';
 import { FormsModule } from '@angular/forms';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { ChildModule } from './child.module';
+import { SummaryDemo } from './summary.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, MyComp, HeaderComp, FooterComp, UsercompComponent, DeptcompComponent, AssignmentComponent
+    AppComponent, MyComp, HeaderComp, FooterComp, UsercompComponent, DeptcompComponent, AssignmentComponent, SummaryDemo
   ],
   imports: [
     BrowserModule, FormsModule, ChildModule
