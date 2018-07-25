@@ -1,0 +1,49 @@
+<!-- ngFor directive -->
+<ul>
+    Welcome to my footer component
+    <li *ngFor="let ud of userdata">
+        {{ud}}
+    </li>
+    <li *ngFor="let dd of deptdata">
+        {{dd}}
+    </li>
+</ul>
+
+
+
+<button class="btn btn-danger" (click)="callMe()"></button>
+
+<!--star button event tracking : event and parameter binding-->
+<app-assignment [isFavourite]="isFavourite" (evt)="callMe($event)"></app-assignment>
+<!--like buttong pink color event and parameter binding-->
+<app-likecomponent [iLike]="iLike" (evt)="onClick($event)"></app-likecomponent>
+
+<app-votercomponent [voteCount]="post.voterCount" [myVote]="post.myVote" (vote)="onVote($event)"></app-votercomponent>
+
+<!--City: <input [value]="city" (input)="city=$event.target.value"/>
+    <img [src]="pp"/>
+<br/>
+{{city}}
+
+City: <input [(ngModel)]="city"/>
+<br/>
+
+Image: <input [(ngModel)]="pp"/>-->
+
+<button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue':'grey'">submit</button>
+
+<!-- ngIf directive to show or not show depending on deptdata length-->
+<div *ngIf='deptdata.length>0; then showdept else shownodept'></div>
+
+<br />
+
+<ng-template #showdept>
+<ul>
+<li *ngFor="let ud of deptdata">
+{{ud}}
+</li>
+</ul>
+</ng-template>
+<ng-template #shownodept>
+<div>No depts</div>
+</ng-template> 

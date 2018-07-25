@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-12">
+    <a class="btn btn-success">New Recipe</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <!--<rb-recipe-item [recipe]="recipe" (click)="onSelected(recipe)"></rb-recipe-item><!--apply *ngFor -->
+      <li *ngFor="let recipe of recipes">
+        <rb-recipe-item [recipe]="recipe" (click)="onSelected(recipe)"></rb-recipe-item> 
+        <!--like buttong pink color event and parameter binding-->
+        <app-likecomponent [totalLikes]="tweet.totalLikes" [iLike]="iLike" (evt)="onClick($event)"></app-likecomponent>
+      </li>
+    </ul>
+  </div>
+</div>
+

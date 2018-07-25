@@ -1,0 +1,11 @@
+<p>Welcome to header component</p>
+<div>
+  <li> 
+      {{CourseData.Cname | uppercase | lowercase}}<br/>
+      {{CourseData.CStartDate | date:'MM/yy'}} <br/>
+      {{CourseData.Students | number}} <br/> 
+      {{CourseData.Rating | number:'1.2-3'}} <br/>
+      {{CourseData.Price | currency:'INR':false}} <br/>
+      {{CourseData | json}}
+  </li>
+</div>
