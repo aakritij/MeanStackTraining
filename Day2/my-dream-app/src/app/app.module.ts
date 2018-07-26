@@ -11,10 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { ChildModule } from './child.module';
 import { SummaryDemo } from './summary.pipe';
+import { ColourChanger } from './colorchanger.directive';
 
 @NgModule({
   declarations: [
-    AppComponent, MyComp, HeaderComp, FooterComp, UsercompComponent, DeptcompComponent, AssignmentComponent, SummaryDemo
+    AppComponent, MyComp, HeaderComp, FooterComp, UsercompComponent, DeptcompComponent, AssignmentComponent, SummaryDemo, ColourChanger
   ],
   imports: [
     BrowserModule, FormsModule, ChildModule
