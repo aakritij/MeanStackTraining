@@ -12,6 +12,8 @@ import { RecipeItemComponent } from "./recipes/recipe-list/recipe-item.component
 import { RecipeService } from './recipes/recipe-list/recipe.service';
 import { Likecomponent } from '../app/likecomponent/likecomponent.component';
 import { DropdownDirective } from './dropdown.directive';
+import { ColourChanger } from '../app_backup/colorchanger.directive';
+import { FormsModule } from '../../node_modules/@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,11 @@ import { DropdownDirective } from './dropdown.directive';
     RecipeDetailComponent,
     RecipeItemComponent,
     Likecomponent,
-    DropdownDirective
+    DropdownDirective,
+    ColourChanger
   ],
   imports: [
-    BrowserModule
+    BrowserModule, FormsModule
   ],
   providers: [RecipeService],
   bootstrap: [RecipeBookAppComponent]
