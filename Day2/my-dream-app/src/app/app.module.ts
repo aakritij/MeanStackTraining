@@ -1,26 +1,40 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { MyComp } from './mycomp.components';
-import { HeaderComp } from './header.comp';
-import { FooterComp } from './footer.comp';
-import { UsercompComponent } from './usercomp/usercomp.component';
-import { DeptcompComponent } from './deptcomp/deptcomp.component';
-import { FormsModule } from '@angular/forms';
-import { AssignmentComponent } from './assignment/assignment.component';
-import { ChildModule } from './child.module';
-import { SummaryDemo } from './summary.pipe';
-import { ColourChanger } from './colorchanger.directive';
+import { RecipeBookAppComponent } from "./recipe-book.component";
+import { HeaderComponent } from "./header.component";
+import { ShoppingListAddComponent } from "./shopping-list/shopping-list-add.component";
+import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { RecipesComponent } from "./recipes/recipes.component";
+import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component";
+import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
+import { RecipeItemComponent } from "./recipes/recipe-list/recipe-item.component";
+import { RecipeService } from './recipes/recipe-list/recipe.service';
+import { Likecomponent } from '../app/likecomponent/likecomponent.component';
+import { DropdownDirective } from './dropdown.directive';
+import { ColourChanger } from '../app_backup/colorchanger.directive';
+import { FormsModule } from '../../node_modules/@angular/forms';
+import {HttpModule} from '@angular/http';
+import { HttpService } from './db.service';
 
 @NgModule({
   declarations: [
-    AppComponent, MyComp, HeaderComp, FooterComp, UsercompComponent, DeptcompComponent, AssignmentComponent, SummaryDemo, ColourChanger
+    RecipeBookAppComponent,
+    HeaderComponent,
+    ShoppingListAddComponent,
+    ShoppingListComponent,
+    RecipesComponent,
+    RecipeListComponent,
+    RecipeDetailComponent,
+    RecipeItemComponent,
+    Likecomponent,
+    DropdownDirective,
+    ColourChanger
   ],
   imports: [
-    BrowserModule, FormsModule, ChildModule
+    BrowserModule, FormsModule, HttpModule
   ],
-  providers: [],
-  bootstrap: [AppComponent, MyComp]
+  providers: [RecipeService, HttpService],
+  bootstrap: [RecipeBookAppComponent]
 })
-export class AppModule { }
+export class AppModule {}

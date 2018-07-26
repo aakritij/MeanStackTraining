@@ -28,7 +28,16 @@
       <div class="col-xs-12">
         <button type="submit" class="btn btn-success" [disabled]="!f.valid">Submit</button>
       </div>
-  </form>
+    </form>
+    <div class="col-xs-12">
+      <button  class="btn btn-primary" (click)="loadData()">Retrieve</button>
+      <ul class="list-group">
+          <!--<rb-recipe-item [recipe]="recipe" (click)="onSelected(recipe)"></rb-recipe-item><!--apply *ngFor -->
+          <li *ngFor="let item of items">
+            {{item.rname}}
+          </li>
+      </ul>
+    </div>
 </div>
 <hr>
 <div class="row">
