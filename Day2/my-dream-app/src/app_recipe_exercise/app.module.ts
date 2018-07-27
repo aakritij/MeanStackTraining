@@ -10,9 +10,7 @@ import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { RecipeItemComponent } from "./recipes/recipe-list/recipe-item.component";
 import { RecipeService } from './recipes/recipe-list/recipe.service';
-import { Likecomponent } from '../app/likecomponent/likecomponent.component';
 import { DropdownDirective } from './dropdown.directive';
-import { ColourChanger } from '../app_backup/colorchanger.directive';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import {HttpModule} from '@angular/http';
 import { HttpService } from './db.service';
@@ -27,9 +25,7 @@ import { HttpService } from './db.service';
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
-    Likecomponent,
-    DropdownDirective,
-    ColourChanger
+    DropdownDirective
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule
