@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img src="{{selectedRecipe?.imagePath}}" alt="" class="img-responsive">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{selectedRecipe?.name}}</h1>
+  </div>
+  <div class="col-xs-12">
+    <button class="btn btn-success">To Shopping List</button>
+    <button class="btn btn-primary">Edit</button>
+    <button class="btn btn-danger">Delete</button>
+  </div>
+  <form (ngSubmit)="formSubmit(f)" #f=ngForm>
+      <div class="col-xs-12">
+        Recipe name : <input name="rname" [(ngModel)]="recipeDetails.rname" type="text" class="form-control" required minlength="4" #recipe=ngModel>
+        <div *ngIf="!recipe.valid">
+            Recipe should be minimum 4 characters!
+        </div>
+        Image path : <input name="image" [(ngModel)]="recipeDetails.image" type="text" class="form-control">
+        Price : <input name="price" [(ngModel)]="recipeDetails.price" type="text" class="form-control">
+        Email : <input name="email" [(ngModel)]="recipeDetails.email" type="text" class="form-control" required email #em=ngModel>
+        <div *ngIf="!em.valid">
+            Email is invalid!
+        </div>
+      </div> 
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid">Submit</button>
+      </div>
+    </form>
+    <div class="col-xs-12">
+      <button  class="btn btn-primary" (click)="loadData()">Retrieve</button>
+      <ul class="list-group">
+          <!--<rb-recipe-item [recipe]="recipe" (click)="onSelected(recipe)"></rb-recipe-item><!--apply *ngFor -->
+          <li *ngFor="let item of items">
+            {{item.rname}}
+          </li>
+      </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <p>{{selectedRecipe?.description}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    Ingredients
+  </div>
+</div>

@@ -1,50 +1,45 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Recipe } from "../recipe";
-import { NgForm } from '../../../../node_modules/@angular/forms';
-import { HttpService } from '../../db.service';
-import { Observable } from '../../../../node_modules/rxjs';
+import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
-  selector: 'rb-recipe-detail',
-  templateUrl: 'recipe-detail.component.html'
+  selector: 'app-recipe-detail',
+  templateUrl: './recipe-detail.component.html',
+  styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-  items:any[] = [];
-  @Input() selectedRecipe: Recipe;
+  recipe: Recipe;
+  id: number;
 
-  constructor(private ser: HttpService) {
-
+  constructor(private recipeService: RecipeService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
-  }
-
-
-  formSubmit(nf:NgForm){
-    //console.log("Form is submitted", nf.value);
-    this.ser.sendData(this.recipeDetails).subscribe((data)=>console.log(data));
-  }
-
-  loadData(){
-      this.ser.getOwnData().subscribe(
-        data=>{
-          const myArray =[];
-          for(let key in data){
-            myArray.push(data[key]);
-            console.log(data[key]);
-          }
-          this.items = myArray;
-          console.log(this.items.length);
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.recipe = this.recipeService.getRecipe(this.id);
         }
-      )
-    }
+      );
+  }
 
-  private recipeDetails={
-    rname: "soup",
-    image: "http://betterbutterbucket.s3-website-ap-southeast-1.amazonaws.com/386x386/public/recipe_thumb/medium/1440074310aB3lyYOV5z.jpg",
-    price: "INR 250",
-    email: "aakriti.jain@gmail.com"
+  onAddToShoppingList() {
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
 
-  };
+  onEditRecipe() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+  }
+
 }
